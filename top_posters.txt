@@ -1,0 +1,13 @@
+RID,RName,NumHITgroups,TotalHITs,Rewards,TaskType
+A3MI6MIUNWCR7F,CastingWords,48934,73621,59099,Transcription
+A2IR7ETVOIULZU,Dolores Labs,1676,320543,26919,Mediator for other requesters
+A2XL3J4NH6JI12,ContentGalore,1150,23728,19375,Content generation
+A1197OGL0WOQ3G,Smartsheet.com Clients,1407,181620,17086,Mediator for other requesters
+AGW2H4I480ZX1,Paul Pullen,6842,161535,11186,Content rewriting
+A1CTI3ZAWTR5AZ,Classify This,228,484369,9685,Object classification
+A1AQ7EJ5P7ME65,Dave,2249,7059,6448,Transcription
+AD7C0BZNKYGYV,QuestionSwami,798,10980,2867,Content generation and evaluation
+AD14NALRDOSN9,retaildata,113,158206,2118,Object classification
+A2RFHBFTZHX7UN,ContentSpooling.net,555,622,987,Content generation and evaluation
+A1DEBE1WPE6JFO,Joel Harvey,707,707,899,Transcription
+A29XDCTJMAE5RU,Raphael Mudge,748,2358,548,Website feedback
