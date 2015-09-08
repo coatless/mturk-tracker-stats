@@ -1,12 +1,15 @@
-install.packages('devtools')
-
+# Grab devtools
+install.packages(c('ggplot2','treemap','devtools','wordcloud'))
 library(devtools)
 
+# Install jsonlite via devtools (cran is broken?)
 install_github("jeroenooms/jsonlite")
-
 library(jsonlite)
 
+##########
 # Hit groups
+#####
+
 hitg.url = 'https://crowd-power.appspot.com/_ah/api/mturk/v1/hitgroup/search?all=yes'
 hitg.doc = fromJSON(txt=hitg.url)
 
@@ -38,7 +41,7 @@ demo.docs[,"gender"] = factor(demo.docs[,"gender"])
 demo.docs[,"yearOfBirth"] = factor(demo.docs[,"yearOfBirth"])
 demo.docs[,"maritalStatus"] = factor(demo.docs[,"maritalStatus"])
 
-demo.docs[,"date"] = strptime(demo.docs[,"date"],"%Y-%m-%dT%H:%M:%S")
+demo.docs$date = strptime(demo.docs$date,"%Y-%m-%dT%H:%M:%S")
 
 #demo.docs[,"hitCreationDate"] = strptime(demo.docs[,"hitCreationDate"],"%Y-%m-%dT%H:%M:%S")
 
@@ -56,8 +59,26 @@ to.date = URLencode("09/08/2015",reserved=T)
 # Get the data
 url2  = paste0("https://crowd-power.appspot.com/_ah/api/mturk/v1/arrivalCompletions/list?from=",from.date,"&to=",to.date)
 
+setwd("~/Box Sync/Courses/CS 565/Presentation/mturk-tracker-stats")
 
+load("demo.rda")
+
+library(data.table)
+DT = data.table(demo.docs)
+z = DT[, list(num=(COUNT = .N)), by=list(locationCountry, gender)]
 
 #####
 # Treemap
 
+library(treemap)
+
+treemap(as.data.frame(z),
+        index=c("locationCountry", "gender"),
+        vSize="num",
+        type="value",
+        title="Breakdown of MTurk Demographics via Country and Gender")
+
+
+library(wordcloud)
+library(RColorBrewer)
+wordcloud(top_posters[,"RName"],top_posters[,"Rewards"]/sum(top_posters[,"Rewards"])*100, colors=brewer.pal(8, "Dark2"))
